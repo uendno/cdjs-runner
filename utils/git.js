@@ -6,15 +6,13 @@ const log = require('../helpers/log');
 const cwd = process.cwd();
 const gitCli = simpleGit(cwd);
 
-exports.pull = () => {
+exports.pull = () => () => {
     log('Git pulling...');
     return gitCli.pull();
 };
 
-exports.updateSubModule = () => {
-
+exports.updateSubModule = (options) => () => {
     if (fs.existsSync(cwd + "/.gitmodules")) {
-        log('Updating submodules...');
         return gitCli.raw(['config', '--file', '.gitmodules', '--get-regexp', 'url'])
             .then(result => {
                 const submodules = result.split("\n");
@@ -40,7 +38,15 @@ exports.updateSubModule = () => {
             })
             .then(() => {
                 log('Updating submodules...');
-                return gitCli.submoduleUpdate(["--init", "--remote", "--recursive"]);
+
+                const args = ["--init"];
+                Object.keys(options).forEach(key => {
+                    if (options[key] === true) {
+                        args.push(`--${key}`)
+                    }
+                });
+
+                return gitCli.submoduleUpdate(args);
             })
     } else {
         return Promise.resolve();
