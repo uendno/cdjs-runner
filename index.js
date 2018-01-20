@@ -4,9 +4,10 @@ module.exports = {
     wait: require('./lib/utils/wait'),
     cwd: require('./lib/utils/cwd'),
     stage: require('./lib/utils/stage'),
-    stages:require('./lib/utils/stages'),
-    steps: require('./lib/utils/steps'),
+    stages: require('./lib/utils/stages'),
+    readEnvFile: require('./lib/utils/readEnvFile'),
+    setEnv: require('./lib/utils/setEnv'),
     exec: (fn) => fn(),
-
-    DEFAULT_CWD: null
+    DEFAULT_CWD: null,
+    env: require('./lib/utils/env'),
 };
