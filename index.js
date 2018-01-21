@@ -10,4 +10,5 @@ module.exports = {
     exec: (fn) => fn(),
     DEFAULT_CWD: null,
     env: require('./lib/utils/env'),
+    upload: require('./lib/utils/upload')
 };

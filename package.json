@@ -10,9 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "adm-zip": "^0.4.7",
     "bluebird": "^3.5.0",
     "dotenv": "^4.0.0",
     "fs-extra": "^4.0.2",
+    "glob": "^7.1.2",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
     "simple-git": "^1.77.0"
   }
 }
