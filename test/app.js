@@ -13,3 +13,12 @@ cli.stderr.on('data', data => console.log(`stderr: ${data}`));
 cli.on('close', (code) => {
     console.log(`child process exited with code ${code}`);
 });
+
+
+funcA()
+    .then(() => funcB())
+    .then(() => funcC())
+    .then(() => funcD())
+    .catch(error => {
+        console.error(error);
+    })
